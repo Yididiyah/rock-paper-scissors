@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    
+</head>
+<body>
+    <script>
+        const optionsToChoose = ['Rock', 'Paper', 'Scissors']
+        function computerPlay(){
+            return optionsToChoose[Math.floor(Math.random() * 3)];
+        }
+        function playRound(playerSelection, computerSelection){
+             if(playerSelection.match(/Rock/i)   && computerSelection.match(/Paper/i)){
+                 return 'You Lose! Paper beats Rock';
+             } else if (playerSelection.match(/Rock/i) && computerSelection.match(/Scissors/i)) {
+                 return 'You Win! Rock beat Scissors';
+             } else if (playerSelection.match(/Paper/i) && computerSelection.match(/Rock/i)){
+                 return 'You Win! Paper beats Rock';
+             } else if (playerSelection.match(/Paper/i) && computerSelection.match(/Scissors/i)) {
+                 return 'You Lose! Scissors beat Paper';
+             } else if (playerSelection.match(/Scissors/i) && computerSelection.match(/Rock/i)) {
+                return 'You Lose! Rock beats Scissors';
+             } else if (playerSelection.match(/Scissors/i) && computerSelection.match(/Paper/i)) {
+                return 'You Win! Scissors beat paper';
+             } else if(playerSelection.toLowerCase() === computerSelection.toLowerCase() )  {
+                 return 'It\'s a draw, try again.';
+             }
+        }
+        function game(){
+                let computerResult = 0
+                let playerResult = 0
+                let result;
+
+            for(let i = 1;i <= 5;i++){
+                const playerSelection = prompt('Enter what you choose');
+                const computerSelection = computerPlay();
+                result = playRound(playerSelection, computerSelection);
+
+                 if(result.includes('Win')){
+                    playerResult+= 1;
+                } else if (result.includes('Lose')){
+                    computerResult += 1;
+                }
+            }
+                if(playerResult > computerResult){
+                    console.log('You Win!');
+                    console.log('Player Score: ', playerResult, 'Computer Score', computerResult);
+                } else if(computerResult > playerResult){
+                    console.log('You Lose, computer wins.');
+                    console.log('Player Score: ', playerResult, 'Computer Score', computerResult);
+                } else {
+                    console.log('No one wins, It\'s a draw.');
+                    console.log('Player Score: ', playerResult, 'Computer Score', computerResult);
+                }
+        }
+        game();
+    </script>
+</body>
+</html>
