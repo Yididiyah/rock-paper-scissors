@@ -1,0 +1,83 @@
+* {
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Architects Daughter', cursive;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom,#859398,#283048 );
+    padding: 4rem;
+    position: relative;
+}
+.header {
+    font-size: 40px;
+    font-style: italic;
+    color: #fff;
+}
+.chosen-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+.chosen-options img {
+    height: 140px;
+    width: auto;
+    margin: 2rem;
+    margin-top: 3rem;
+}
+.chosen-options--option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 306px;
+    width: 254px;
+    
+}
+.chosen-options--option h3 {
+    font-size: 20px;
+    font-style: italic;
+    color: #fff;
+}
+.result {
+    margin-top: 2rem;
+    font-size: 30px;
+    font-style: italic;
+    color: #fff;
+}
+.restart {
+    position: absolute;
+    margin-top: 2rem;
+    bottom: 20rem;
+    padding: 2rem 4rem;
+    background-color: #eee;
+    font-size: 20px;
+}
+[data-who] {
+    visibility: hidden;
+}
+.buttons {
+    margin-top: 12rem;
+    bottom: 2rem;
+}
+.btn {
+    margin: 2rem;
+    transition: all .5s ease-in-out;
+}
+.btn :focus {
+    outline: none;
+}
+.btn:active {
+    outline: none;
+    transform: scale(1.1);
+}
+.btn img {
+    height: 140px;
+    width: auto;   
+}

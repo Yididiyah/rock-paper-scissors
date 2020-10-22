@@ -4,59 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <script>
-        const optionsToChoose = ['Rock', 'Paper', 'Scissors']
-        function computerPlay(){
-            return optionsToChoose[Math.floor(Math.random() * 3)];
-        }
-        function playRound(playerSelection, computerSelection){
-             if(playerSelection.match(/Rock/i)   && computerSelection.match(/Paper/i)){
-                 return 'You Lose! Paper beats Rock';
-             } else if (playerSelection.match(/Rock/i) && computerSelection.match(/Scissors/i)) {
-                 return 'You Win! Rock beat Scissors';
-             } else if (playerSelection.match(/Paper/i) && computerSelection.match(/Rock/i)){
-                 return 'You Win! Paper beats Rock';
-             } else if (playerSelection.match(/Paper/i) && computerSelection.match(/Scissors/i)) {
-                 return 'You Lose! Scissors beat Paper';
-             } else if (playerSelection.match(/Scissors/i) && computerSelection.match(/Rock/i)) {
-                return 'You Lose! Rock beats Scissors';
-             } else if (playerSelection.match(/Scissors/i) && computerSelection.match(/Paper/i)) {
-                return 'You Win! Scissors beat paper';
-             } else if(playerSelection.toLowerCase() === computerSelection.toLowerCase() )  {
-                 return 'It\'s a draw, try again.';
-             }
-        }
-        function game(){
-                let computerResult = 0
-                let playerResult = 0
-                let result;
-
-            for(let i = 1;i <= 5;i++){
-                const playerSelection = prompt('Enter what you choose');
-                const computerSelection = computerPlay();
-                result = playRound(playerSelection, computerSelection);
-
-                 if(result.includes('Win')){
-                    playerResult+= 1;
-                } else if (result.includes('Lose')){
-                    computerResult += 1;
-                }
-            }
-                if(playerResult > computerResult){
-                    console.log('You Win!');
-                    console.log('Player Score: ', playerResult, 'Computer Score', computerResult);
-                } else if(computerResult > playerResult){
-                    console.log('You Lose, computer wins.');
-                    console.log('Player Score: ', playerResult, 'Computer Score', computerResult);
-                } else {
-                    console.log('No one wins, It\'s a draw.');
-                    console.log('Player Score: ', playerResult, 'Computer Score', computerResult);
-                }
-        }
-        game();
-    </script>
+    <div class="wrapper">
+        <h2 class="header">Rock | Paper | Scissors</h2>
+        <div class="chosen-options">
+            <div class="chosen-options--option">
+                <h3>Computer</h3>
+                <img data-who="Computer" src="" alt="Chosen Option">
+                <h3>Score</h3>
+                <h3 data-score="computer" class="current-score"></h3>
+            </div>
+            <div class="chosen-options--option">
+                <h3>Player</h3>
+                <img data-who="Player" src="" alt="Chosen Option">
+                <h3>Score</h3>
+                <h3 data-score="player" class="current-score"></h3>
+            </div>
+        </div>
+        <h2 class='result'>First to 5 wins!</h2>
+        <div class="buttons">
+            <button data-option="rock" class="btn btn-rock"><img src="./img/rock.png" alt="rock"></button>
+            <button data-option="paper" class="btn btn-paper"><img src="./img/paper.png" alt="paper"></button>
+            <button data-option="scissors" class="btn btn-scissor"><img src="./img/scissors.png" alt="scissor"></button>
+        </div>
+    </div>
+    <script src="./app.js"></script>
 </body>
 </html>
