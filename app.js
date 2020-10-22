@@ -5,7 +5,8 @@
 // Display a running score and announce winner once one payer reaches 5 points
 // Show restart button when the game ends
 // Stop the buttons from increasing the score after the game ends
-
+// TODO: Disable the buttons when the game is complete
+// TODO: Fix issue on Computer image on github
 let computerResult = 0
 let playerResult = 0
 let result;
@@ -14,8 +15,9 @@ const computerSelectedImg =  document.querySelector('img[data-who="Computer"]');
 const playerSelectedImg =  document.querySelector('img[data-who="Player"]');
 const resultDisplay = document.querySelector('.result');
 const restartButton = document.createElement('button');
+const buttons = document.querySelectorAll('.btn');
 
-const optionsToChoose = ['Rock', 'Paper', 'Scissors']
+const optionsToChoose = ['rock', 'paper', 'scissors']
         function computerPlay(){
             return optionsToChoose[Math.floor(Math.random() * 3)];
         }
@@ -75,24 +77,26 @@ const optionsToChoose = ['Rock', 'Paper', 'Scissors']
                     restartButton.addEventListener('click', restartGame);
                 }
                 gameComplete = true;
+                buttons.forEach(button => button.disabled = true);
             }
         }
         function restartGame(){
             gameComplete = false;
-
+            
             computerResult = 0;
             playerResult = 0;
             updateScore();
-
+            
             computerSelectedImg.src = '';
             computerSelectedImg.style.visibility = 'hidden';
             playerSelectedImg.src = '';
             playerSelectedImg.style.visibility = 'hidden';
-
+            
             resultDisplay.textContent = 'First to 5 wins!';
             restartButton.remove();
+
+            buttons.forEach(button => button.disabled = false);
         }
-        const buttons = document.querySelectorAll('.btn');
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 onButtonPress(button.getAttribute('data-option'));
